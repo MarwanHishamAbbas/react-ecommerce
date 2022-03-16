@@ -6,3 +6,5 @@ const store = configureStore({
     products: productsSlice,
   },
 });
+
+export default store;

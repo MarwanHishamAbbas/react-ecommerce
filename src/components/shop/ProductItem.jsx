@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const ProductItem = ({ id, name, imageSrc, imageAlt, price, color }) => {
+const ProductItem = ({ id, name, imageSrc, imageAlt, price, category }) => {
   return (
     <div key={id} className="group relative">
       <div className="w-full min-h-80 bg-gray-dark rounded-md overflow-hidden lg:h-80">
@@ -10,7 +10,7 @@ const ProductItem = ({ id, name, imageSrc, imageAlt, price, color }) => {
           className="w-full h-full object-center object-cover lg:w-full lg:h-full"
         />
       </div>
-      <div className="mt-4 flex justify-between">
+      <div className="mt-4 flex flex-col">
         <div>
           <h3 className="text-base font-semibold">
             <Link to={`/productDetails/${id}`}>
@@ -18,9 +18,11 @@ const ProductItem = ({ id, name, imageSrc, imageAlt, price, color }) => {
               {name}
             </Link>
           </h3>
-          <p className="mt-1 text-xs text-gray-dark">{color}</p>
+          <p className="mt-2 mb-1 font-semibold text-xs text-gray-dark capitalize">
+            {category}
+          </p>
         </div>
-        <p className="text-base font-semibold">{price}</p>
+        <p className="text-base font-semibold">${price}.00</p>
       </div>
     </div>
   );

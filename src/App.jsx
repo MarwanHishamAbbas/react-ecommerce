@@ -4,7 +4,17 @@ import ProductDetails from "./pages/ProductDetails";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import { Routes, Route } from "react-router-dom";
+import { fetchProductsData } from "./store/store-actions";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProductsData());
+  }, [dispatch]);
+
   return (
     <Layout>
       <Navigation />
