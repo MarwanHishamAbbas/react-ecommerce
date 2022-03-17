@@ -10,7 +10,7 @@ const ProductItem = ({ id, name, imageSrc, imageAlt, price, category }) => {
           className="w-full h-full object-center object-cover lg:w-full lg:h-full"
         />
       </div>
-      <div className="mt-4 flex flex-col">
+      <div className="mt-4 flex justify-between">
         <div>
           <h3 className="text-base font-semibold">
             <Link to={`/productDetails/${id}`}>

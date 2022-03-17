@@ -3,22 +3,11 @@ import { StarIcon } from "@heroicons/react/solid";
 import { RadioGroup } from "@headlessui/react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+
+import { Link } from "react-router-dom";
 
 const product = {
-  name: "Basic Tee 6-Pack",
-  price: "$192",
-  href: "#",
-  breadcrumbs: [
-    { id: 1, name: "Men", href: "#" },
-    { id: 2, name: "Clothing", href: "#" },
-  ],
-  images: [
-    {
-      src: "https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg",
-      alt: "Two each of gray, white, and black shirts laying flat.",
-    },
-  ],
-
   sizes: [
     { name: "XXS", inStock: false },
     { name: "XS", inStock: true },
@@ -53,44 +42,60 @@ const ProductDetails = () => {
   const productItem = products.find((item) => item.id === productId);
 
   if (!productItem) {
-    return <h1>Loading....</h1>;
+    return (
+      <AiOutlineLoading3Quarters className="animate-spin text-center text-7xl w-full mt-12" />
+    );
   }
 
   return (
     <div className="bg-white">
       <div className="pt-6">
         <nav aria-label="Breadcrumb">
-          <ol role="list" className="flex items-center space-x-2">
-            {product.breadcrumbs.map((breadcrumb) => (
-              <li key={breadcrumb.id}>
-                <div className="flex items-center">
-                  <a
-                    href={breadcrumb.href}
-                    className="mr-2 text-sm font-medium text-gray-900"
+          <ol
+            role="list"
+            className="flex items-center space-x-2 text-gray-dark font-semibold"
+          >
+            <li key={productItem.id}>
+              <div className="flex items-center">
+                <Link to="/products" className="mr-2 text-sm ">
+                  Products
+                </Link>
+                <svg
+                  width={16}
+                  height={20}
+                  viewBox="0 0 16 20"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  className="w-4 h-5"
+                >
+                  <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+                </svg>
+                <div className="text-sm">
+                  <Link
+                    to={`/products/${productItem.gender}`}
+                    aria-current="page"
+                    className="capitalize"
                   >
-                    {breadcrumb.name}
-                  </a>
-                  <svg
-                    width={16}
-                    height={20}
-                    viewBox="0 0 16 20"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                    className="w-4 h-5 text-gray-300"
-                  >
-                    <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-                  </svg>
+                    {productItem.gender}
+                  </Link>
                 </div>
-              </li>
-            ))}
+                <svg
+                  width={16}
+                  height={20}
+                  viewBox="0 0 16 20"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  className="w-4 h-5"
+                >
+                  <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+                </svg>
+              </div>
+            </li>
             <li className="text-sm">
-              <a
-                href={product.href}
-                aria-current="page"
-                className="font-medium text-gray-500 hover:text-gray-600"
-              >
-                {product.name}
+              <a href={product.href} aria-current="page" className=" ">
+                {productItem.title}
               </a>
             </li>
           </ol>
@@ -101,7 +106,7 @@ const ProductDetails = () => {
           <div className="max-w-2xl mx-auto rounded-lg overflow-hidden lg:block">
             <img
               src={productItem.src}
-              alt={product.images[0].alt}
+              alt={productItem.title}
               className="w-full h-full object-center object-cover"
             />
           </div>
@@ -121,7 +126,7 @@ const ProductDetails = () => {
             <p className="text-3xl text-gray-900">{product.price}</p>
 
             {/* Reviews */}
-            <div className="mt-6">
+            <div className="mt-6 flex justify-between">
               <h3 className="sr-only">Reviews</h3>
               <div className="flex items-center">
                 <div className="flex items-center">
@@ -138,6 +143,7 @@ const ProductDetails = () => {
                     />
                   ))}
                 </div>
+
                 <p className="sr-only">{reviews.average} out of 5 stars</p>
                 <a
                   href={reviews.href}
@@ -146,17 +152,18 @@ const ProductDetails = () => {
                   {reviews.totalCount} reviews
                 </a>
               </div>
+              <span className="text-2xl font-bold">
+                ${productItem.price}.00
+              </span>
             </div>
 
             <form className="mt-10">
-              {/* Colors */}
-
               {/* Sizes */}
               <div className="mt-10">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm text-gray-900 font-medium">Size</h3>
                   <a
-                    href="#"
+                    href="https://www.dimensions.co.uk/advice-centre/size-guide"
                     className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
                   >
                     Size guide

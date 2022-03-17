@@ -3,6 +3,7 @@ import Navigation from "./components/layout/Navigation";
 import ProductDetails from "./pages/ProductDetails";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
+import ScrollToTop from "./components/UI/ScrollToTop";
 import { Routes, Route } from "react-router-dom";
 import { fetchProductsData } from "./store/store-actions";
 import { useEffect } from "react";
@@ -18,6 +19,7 @@ function App() {
   return (
     <Layout>
       <Navigation />
+      <ScrollToTop />
       <Routes>
         <Route path="products/*" element={<Products />} />
         <Route path="cart" element={<Cart />} />
