@@ -20,9 +20,9 @@ function App() {
     <Layout>
       <Navigation />
       <ScrollToTop />
+      <Cart />
       <Routes>
         <Route path="products/*" element={<Products />} />
-        <Route path="cart" element={<Cart />} />
         <Route path="productDetails/:productId" element={<ProductDetails />} />
       </Routes>
     </Layout>

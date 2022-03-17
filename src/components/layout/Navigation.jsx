@@ -19,7 +19,7 @@ const navigation = [
   { name: "Popular Products", href: "popular" },
 ];
 
-export default function Navigation() {
+export default function Navigation({ setCartIsOpen }) {
   return (
     <>
       <Disclosure
@@ -79,12 +79,12 @@ export default function Navigation() {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <Link
-                    to="/cart"
-                    className="bg-gray-800 p-1 rounded-full text-gray-400  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                  <div
+                    onClick={setCartIsOpen}
+                    className="bg-gray-800 p-1 rounded-full  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                   >
                     <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
-                  </Link>
+                  </div>
 
                   {/* Profile dropdown */}
                   <Menu as="div" className="ml-3 relative">
