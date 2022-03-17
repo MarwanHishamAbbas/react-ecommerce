@@ -147,7 +147,7 @@ const ProductDetails = () => {
                 <p className="sr-only">{reviews.average} out of 5 stars</p>
                 <a
                   href={reviews.href}
-                  className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                  className="ml-1 text-sm font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   {reviews.totalCount} reviews
                 </a>
