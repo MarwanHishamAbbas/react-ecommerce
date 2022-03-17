@@ -2,10 +2,11 @@ import { useState } from "react";
 import { StarIcon } from "@heroicons/react/solid";
 import { RadioGroup } from "@headlessui/react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import { Link } from "react-router-dom";
+import { cartActions } from "../store/cart-slice";
 
 const product = {
   sizes: [
@@ -40,6 +41,19 @@ const ProductDetails = () => {
 
   const products = useSelector((state) => state.products.products);
   const productItem = products.find((item) => item.id === productId);
+
+  const dispatch = useDispatch();
+  const addItemHandler = () => {
+    dispatch(
+      cartActions.addItemtoCart({
+        id: productItem.id,
+        name: productItem.title,
+        src: productItem.src,
+        price: productItem.price,
+        category: productItem.category,
+      })
+    );
+  };
 
   if (!productItem) {
     return (
@@ -154,7 +168,7 @@ const ProductDetails = () => {
                 </span>
               </div>
 
-              <form className="mt-10">
+              <div className="mt-10">
                 {/* Sizes */}
                 <div className="mt-10">
                   <div className="flex items-center justify-between">
@@ -237,12 +251,12 @@ const ProductDetails = () => {
                 </div>
 
                 <button
-                  type="submit"
+                  onClick={addItemHandler}
                   className="mt-10 w-full bg-black border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Add to cart
                 </button>
-              </form>
+              </div>
             </div>
 
             <div className="py-10 lg:pt-6 lg:pb-16 lg:pr-8">

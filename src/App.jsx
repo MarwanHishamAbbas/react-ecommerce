@@ -7,10 +7,11 @@ import ScrollToTop from "./components/UI/ScrollToTop";
 import { Routes, Route } from "react-router-dom";
 import { fetchProductsData } from "./store/store-actions";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
+  const isVisible = useSelector((state) => state.cart.isVisible);
 
   useEffect(() => {
     dispatch(fetchProductsData());
@@ -20,7 +21,7 @@ function App() {
     <Layout>
       <Navigation />
       <ScrollToTop />
-      <Cart />
+      {isVisible && <Cart />}
       <Routes>
         <Route path="products/*" element={<Products />} />
         <Route path="productDetails/:productId" element={<ProductDetails />} />

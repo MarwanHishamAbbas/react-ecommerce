@@ -1,6 +1,8 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../store/cart-slice";
 
 const products = [
   {
@@ -31,14 +33,21 @@ const products = [
 ];
 
 export default function Cart() {
-  const [open, setOpen] = useState(true);
+  const cart = useSelector((state) => state.cart);
+
+  const isVisible = useSelector((state) => state.cart.isVisible);
+  const dispatch = useDispatch();
+
+  const toggleHandler = () => {
+    dispatch(cartActions.toggleCart());
+  };
 
   return (
-    <Transition.Root show={open} as={Fragment}>
+    <Transition.Root show={isVisible} as={Fragment}>
       <Dialog
         as="div"
         className="fixed inset-0 overflow-hidden z-20"
-        onClose={setOpen}
+        onClose={toggleHandler}
       >
         <div className="absolute inset-0 overflow-hidden">
           <Transition.Child
@@ -67,15 +76,15 @@ export default function Cart() {
                 <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                   <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                     <div className="flex items-start justify-between">
-                      <Dialog.Title className="text-lg font-medium text-gray-900">
+                      <Dialog.Title className="text-lg font-medium">
                         {" "}
                         Shopping cart{" "}
                       </Dialog.Title>
                       <div className="ml-3 flex h-7 items-center">
                         <button
                           type="button"
-                          className="-m-2 p-2 text-gray-dark hover:text-gray-dark"
-                          onClick={() => setOpen(false)}
+                          className="-m-2 p-2 "
+                          onClick={toggleHandler}
                         >
                           <span className="sr-only">Close panel</span>
                           <XIcon className="h-6 w-6" aria-hidden="true" />
@@ -87,42 +96,35 @@ export default function Cart() {
                       <div className="flow-root">
                         <ul
                           role="list"
-                          className="-my-6 divide-y divide-gray-dark"
+                          className="-my-6 divide-y divide-gray-200"
                         >
-                          {products.map((product) => (
+                          {cart.items.map((product) => (
                             <li key={product.id} className="flex py-6">
-                              <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                              <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md">
                                 <img
-                                  src={product.imageSrc}
-                                  alt={product.imageAlt}
+                                  src={product.src}
+                                  alt=""
                                   className="h-full w-full object-cover object-center"
                                 />
                               </div>
 
                               <div className="ml-4 flex flex-1 flex-col">
                                 <div>
-                                  <div className="flex justify-between text-base font-medium text-gray-dark">
-                                    <h3>
-                                      <a href={product.href}>
-                                        {" "}
-                                        {product.name}{" "}
-                                      </a>
-                                    </h3>
-                                    <p className="ml-4">{product.price}</p>
+                                  <div className="flex justify-between text-base font-medium ">
+                                    <h3>{product.name}</h3>
+                                    <p className="ml-4">${product.price}.00</p>
                                   </div>
-                                  <p className="mt-1 text-sm text-gray-dark">
+                                  <p className="mt-1 text-sm ">
                                     {product.color}
                                   </p>
                                 </div>
                                 <div className="flex flex-1 items-end justify-between text-sm">
-                                  <p className="text-gray-dark">
-                                    Qty {product.quantity}
-                                  </p>
+                                  <p className="">Qty 1</p>
 
                                   <div className="flex">
                                     <button
                                       type="button"
-                                      className="font-medium text-gray-dark "
+                                      className="font-medium"
                                     >
                                       Remove
                                     </button>
@@ -139,7 +141,7 @@ export default function Cart() {
                   <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                     <div className="flex justify-between text-base font-medium text-gray-900">
                       <p>Subtotal</p>
-                      <p>$262.00</p>
+                      <p>${cart.totalPrice}.00</p>
                     </div>
                     <p className="mt-0.5 text-sm text-gray-500">
                       Shipping and taxes calculated at checkout.
@@ -158,7 +160,7 @@ export default function Cart() {
                         <button
                           type="button"
                           className="font-medium text-indigo-600 hover:text-indigo-500"
-                          onClick={() => setOpen(false)}
+                          onClick={toggleHandler}
                         >
                           Continue Shopping
                           <span aria-hidden="true"> &rarr;</span>

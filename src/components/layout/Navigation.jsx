@@ -11,6 +11,8 @@ import {
 } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 import LangSelect from "../UI/LangSelect";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store/cart-slice";
 
 const navigation = [
   { name: "Male", href: "male" },
@@ -19,7 +21,11 @@ const navigation = [
   { name: "Popular Products", href: "popular" },
 ];
 
-export default function Navigation({ setCartIsOpen }) {
+export default function Navigation() {
+  const dispatch = useDispatch();
+  const openCartHandler = () => {
+    dispatch(cartActions.toggleCart());
+  };
   return (
     <>
       <Disclosure
@@ -79,11 +85,11 @@ export default function Navigation({ setCartIsOpen }) {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <div
-                    onClick={setCartIsOpen}
-                    className="bg-gray-800 p-1 rounded-full  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                  >
-                    <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                  <div className="bg-gray-800 p-1 rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                    <ShoppingCartIcon
+                      className="h-6 w-6"
+                      onClick={openCartHandler}
+                    />
                   </div>
 
                   {/* Profile dropdown */}
