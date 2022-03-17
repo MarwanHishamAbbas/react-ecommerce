@@ -31,7 +31,7 @@ export default function Cart() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="absolute inset-0 bg-black bg-opacity-75 transition-opacity" />
+            <Dialog.Overlay className="absolute inset-0 bg-black bg-opacity-80 transition-opacity" />
           </Transition.Child>
 
           <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
@@ -68,7 +68,7 @@ export default function Cart() {
                       <div className="flow-root">
                         <ul
                           role="list"
-                          className="-my-6 divide-y divide-gray-200"
+                          className="-my-6 divide-y divide-gray-dark"
                         >
                           {cart.items.length == "0" ? (
                             <h1 className="text-3xl text-center mt-32">
@@ -83,6 +83,7 @@ export default function Cart() {
                                 name={product.name}
                                 price={product.price}
                                 itemQuantity={product.itemQuantity}
+                                size={product.size}
                               />
                             ))
                           )}
@@ -92,19 +93,21 @@ export default function Cart() {
                   </div>
 
                   <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
-                    <div className="flex justify-between text-base font-medium text-gray-900">
-                      <p>Subtotal</p>
-                      <p>${cart.totalPrice}.00</p>
+                    <div className="flex justify-between text-base font-bold">
+                      <p className="font-semibold text-sm">Subtotal</p>
+                      <p className="text-lg font-bold">${cart.totalPrice}.00</p>
                     </div>
-                    <p className="mt-0.5 text-sm text-gray-500">
+                    <p className="mt-0.5 text-sm text-gray-dark">
                       Shipping and taxes calculated at checkout.
                     </p>
                     <div className="mt-6">
-                      <a
-                        href="#"
-                        className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                      >
-                        Checkout
+                      <a href="#">
+                        <button
+                          className="flex w-full items-center justify-center rounded-md border border-transparent bg-black px-6 py-3 text-base font-medium text-white shadow-sm disabled:cursor-not-allowed disabled:bg-gray-dark"
+                          disabled={cart.items.length == "0" ? true : false}
+                        >
+                          Process to Checkout
+                        </button>
                       </a>
                     </div>
                     <div className="mt-6 flex justify-center text-center text-sm text-gray-500">

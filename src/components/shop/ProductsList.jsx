@@ -13,9 +13,7 @@ const ProductsList = () => {
   if (pathname.includes("/female")) {
     products = productsState.filter((item) => item.gender === "female");
   }
-  if (pathname.includes("/kids")) {
-    products = productsState.filter((item) => item.gender === "kids");
-  } else {
+  if (pathname.includes("/popular")) {
     products = productsState;
   }
 

@@ -24,6 +24,7 @@ const CartItem = (props) => {
             <p className="ml-4">${props.price}.00</p>
           </div>
         </div>
+        <span className="mt-4">{props.size.name}</span>
         <div className="flex flex-1 items-end justify-between text-sm">
           <p className="">Qty {props.itemQuantity}</p>
 
@@ -31,7 +32,7 @@ const CartItem = (props) => {
             <button
               onClick={removeItemHandler}
               type="button"
-              className="font-medium"
+              className="font-medium text-gray-dark"
             >
               Remove
             </button>

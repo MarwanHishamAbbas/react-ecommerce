@@ -40,7 +40,7 @@ export default function LangSelect() {
                 <Listbox.Option
                   key={personIdx}
                   className={({ active }) =>
-                    `cursor-default select-none relative py-2 pl-10 pr-4 ${
+                    `cursor-pointer select-none relative py-2 pl-10 pr-4 ${
                       active ? "text-amber-900 bg-amber-100" : "text-gray-900"
                     }`
                   }

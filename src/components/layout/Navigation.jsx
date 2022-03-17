@@ -9,7 +9,7 @@ import {
   ShoppingCartIcon,
   LocationMarkerIcon,
 } from "@heroicons/react/outline";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import LangSelect from "../UI/LangSelect";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/cart-slice";
@@ -73,14 +73,17 @@ export default function Navigation() {
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
-                        <Link
+                        <NavLink
                           key={item.name}
                           to={`products/${item.href}`}
-                          className="text-gray-300 hover:bg-gray-700
-                        px-3 py-2 rounded-md text-sm font-medium"
+                          className={(navData) =>
+                            navData.isActive
+                              ? "text-white px-3 py-2 rounded-md text-sm font-medium bg-black transition-all"
+                              : "text-black px-3 py-2 rounded-md text-sm font-medium transition-all"
+                          }
                         >
                           {item.name}
-                        </Link>
+                        </NavLink>
                       ))}
                     </div>
                   </div>

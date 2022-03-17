@@ -34,6 +34,7 @@ export const sendCartData = (cart) => {
             items: cart.items,
             totalQuantity: cart.totalQuantity,
             totalPrice: cart.totalPrice,
+            size: cart.size,
           }),
         }
       );
@@ -69,6 +70,7 @@ export const fetchCartData = () => {
           items: CartData.items || [],
           totalQuantity: CartData.totalQuantity,
           totalPrice: CartData.totalPrice,
+          size: CartData.size,
         })
       );
     } catch (error) {

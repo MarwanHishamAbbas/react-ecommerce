@@ -4,18 +4,16 @@ import { RadioGroup } from "@headlessui/react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-
 import { Link } from "react-router-dom";
 import { cartActions } from "../store/cart-slice";
 
 const product = {
   sizes: [
-    { name: "XXS", inStock: false },
     { name: "XS", inStock: true },
-    { name: "S", inStock: true },
+    { name: "S", inStock: false },
     { name: "M", inStock: true },
     { name: "L", inStock: true },
-    { name: "XL", inStock: true },
+    { name: "XL", inStock: false },
     { name: "2XL", inStock: true },
     { name: "3XL", inStock: true },
   ],
@@ -36,7 +34,13 @@ const ProductDetails = () => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+
+  const [selectedSize, setSelectedSize] = useState("M");
+
+  const sizeHandler = (e) => {
+    setSelectedSize(e.target.innerText);
+  };
+
   const { productId } = useParams();
 
   const products = useSelector((state) => state.products.products);
@@ -52,6 +56,7 @@ const ProductDetails = () => {
         price: productItem.price,
         category: productItem.category,
         itemQuantity: 1,
+        size: selectedSize,
       })
     );
   };
@@ -72,7 +77,7 @@ const ProductDetails = () => {
           >
             <li key={productItem.id}>
               <div className="flex items-center">
-                <Link to="/products" className="mr-2 text-sm ">
+                <Link to="/products/popular" className="mr-2 text-sm ">
                   Products
                 </Link>
                 <svg
@@ -150,8 +155,8 @@ const ProductDetails = () => {
                         key={rating}
                         className={classNames(
                           reviews.average > rating
-                            ? "text-gray-900"
-                            : "text-gray-200",
+                            ? "text-yellow"
+                            : "text-yellow",
                           "h-5 w-5 flex-shrink-0"
                         )}
                         aria-hidden="true"
@@ -173,7 +178,7 @@ const ProductDetails = () => {
                 {/* Sizes */}
                 <div className="mt-10">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-sm t font-medium">Size</h3>
+                    <h3 className="text-sm font-medium">Size</h3>
                     <a
                       href="https://www.dimensions.co.uk/advice-centre/size-guide"
                       className="text-sm font-medium "
@@ -200,15 +205,19 @@ const ProductDetails = () => {
                             classNames(
                               size.inStock
                                 ? "bg-white shadow-sm  cursor-pointer"
-                                : "bg-gray-50 text-gray-200 cursor-not-allowed",
+                                : " cursor-not-allowed",
                               active ? "ring-2 ring-blue" : "",
-                              "group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
+                              "group relative border rounded-md flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 "
                             )
                           }
                         >
                           {({ active, checked }) => (
                             <>
-                              <RadioGroup.Label as="p">
+                              <RadioGroup.Label
+                                onClick={sizeHandler}
+                                as="p"
+                                className="py-4 px-5 sm:py-6 w-full text-center"
+                              >
                                 {size.name}
                               </RadioGroup.Label>
                               {size.inStock ? (
@@ -255,7 +264,7 @@ const ProductDetails = () => {
                   onClick={addItemHandler}
                   className="mt-10 w-full bg-black border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                  Add to cart
+                  Add to Cart
                 </button>
               </div>
             </div>
