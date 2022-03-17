@@ -35,7 +35,7 @@ const ProductDetails = () => {
     return classes.filter(Boolean).join(" ");
   }
 
-  const [selectedSize, setSelectedSize] = useState("M");
+  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
 
   const sizeHandler = (e) => {
     setSelectedSize(e.target.innerText);
@@ -63,7 +63,7 @@ const ProductDetails = () => {
 
   if (!productItem) {
     return (
-      <AiOutlineLoading3Quarters className="animate-spin text-center text-7xl w-full mt-12" />
+      <AiOutlineLoading3Quarters className="animate-spin text-center text-7xl w-full mt-36" />
     );
   }
 
@@ -216,7 +216,7 @@ const ProductDetails = () => {
                               <RadioGroup.Label
                                 onClick={sizeHandler}
                                 as="p"
-                                className="py-4 px-5 sm:py-6 w-full text-center"
+                                className="w-12 h-12 flex flex-1 justify-center items-center"
                               >
                                 {size.name}
                               </RadioGroup.Label>

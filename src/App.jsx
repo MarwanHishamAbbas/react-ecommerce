@@ -3,6 +3,7 @@ import Navigation from "./components/layout/Navigation";
 import ProductDetails from "./pages/ProductDetails";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 import ScrollToTop from "./components/UI/ScrollToTop";
 import { Routes, Route } from "react-router-dom";
 import {
@@ -38,6 +39,7 @@ function App() {
       <Routes>
         <Route path="products/*" element={<Products />} />
         <Route path="productDetails/:productId" element={<ProductDetails />} />
+        <Route path="checkout" element={<Checkout />} />
       </Routes>
     </Layout>
   );

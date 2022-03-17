@@ -13,12 +13,17 @@ const ProductsList = () => {
   if (pathname.includes("/female")) {
     products = productsState.filter((item) => item.gender === "female");
   }
+
+  if (pathname.includes("/kids")) {
+    products = productsState.filter((item) => item.gender === "kids");
+  }
+
   if (pathname.includes("/popular")) {
     products = productsState;
   }
 
   return (
-    <div className=" py-16 px-0 sm:py-24">
+    <div className=" py-9 px-0 sm:py-24">
       <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {products.map((product) => (
           <ProductItem
