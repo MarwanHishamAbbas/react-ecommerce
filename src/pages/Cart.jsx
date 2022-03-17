@@ -3,6 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../store/cart-slice";
+import CartItem from "../components/cart/CartItem";
 
 export default function Cart() {
   const cart = useSelector((state) => state.cart);
@@ -13,7 +14,6 @@ export default function Cart() {
   const toggleHandler = () => {
     dispatch(cartActions.toggleCart());
   };
-
   return (
     <Transition.Root show={isVisible} as={Fragment}>
       <Dialog
@@ -70,41 +70,22 @@ export default function Cart() {
                           role="list"
                           className="-my-6 divide-y divide-gray-200"
                         >
-                          {cart.items.map((product) => (
-                            <li key={product.id} className="flex py-6">
-                              <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md">
-                                <img
-                                  src={product.src}
-                                  alt=""
-                                  className="h-full w-full object-cover object-center"
-                                />
-                              </div>
-
-                              <div className="ml-4 flex flex-1 flex-col">
-                                <div>
-                                  <div className="flex justify-between text-base font-medium ">
-                                    <h3>{product.name}</h3>
-                                    <p className="ml-4">${product.price}.00</p>
-                                  </div>
-                                  <p className="mt-1 text-sm ">
-                                    {product.color}
-                                  </p>
-                                </div>
-                                <div className="flex flex-1 items-end justify-between text-sm">
-                                  <p className="">Qty 1</p>
-
-                                  <div className="flex">
-                                    <button
-                                      type="button"
-                                      className="font-medium"
-                                    >
-                                      Remove
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                          ))}
+                          {cart.items.length == "0" ? (
+                            <h1 className="text-3xl text-center mt-32">
+                              No Items Added
+                            </h1>
+                          ) : (
+                            cart.items.map((product) => (
+                              <CartItem
+                                key={product.id}
+                                id={product.id}
+                                src={product.src}
+                                name={product.name}
+                                price={product.price}
+                                itemQuantity={product.itemQuantity}
+                              />
+                            ))
+                          )}
                         </ul>
                       </div>
                     </div>

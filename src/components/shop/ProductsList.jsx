@@ -1,7 +1,6 @@
 import ProductItem from "./ProductItem";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
 
 const ProductsList = () => {
   const productsState = useSelector((state) => state.products.products);
@@ -13,6 +12,11 @@ const ProductsList = () => {
   }
   if (pathname.includes("/female")) {
     products = productsState.filter((item) => item.gender === "female");
+  }
+  if (pathname.includes("/kids")) {
+    products = productsState.filter((item) => item.gender === "kids");
+  } else {
+    products = productsState;
   }
 
   return (

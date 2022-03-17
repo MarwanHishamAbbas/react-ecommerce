@@ -51,6 +51,7 @@ const ProductDetails = () => {
         src: productItem.src,
         price: productItem.price,
         category: productItem.category,
+        itemQuantity: 1,
       })
     );
   };
@@ -116,7 +117,7 @@ const ProductDetails = () => {
         </nav>
         <div className="flex flex-col md:flex-row">
           {/* Image Gallery */}
-          <div className="pt-10 pb-16 lg:pt-16 lg:pb-24 basis-[35%]">
+          <div className="pt-10 pb-5 lg:pt-16 lg:pb-24 basis-[35%]">
             <div className="max-w-2xl mx-auto rounded-lg overflow-hidden lg:block">
               <img
                 src={productItem.src}
