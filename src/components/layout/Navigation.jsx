@@ -11,7 +11,7 @@ import {
 } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 import LangSelect from "../UI/LangSelect";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/cart-slice";
 
 const navigation = [
@@ -22,6 +22,7 @@ const navigation = [
 ];
 
 export default function Navigation() {
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const dispatch = useDispatch();
   const openCartHandler = () => {
     dispatch(cartActions.toggleCart());
@@ -30,7 +31,7 @@ export default function Navigation() {
     <>
       <Disclosure
         as="nav"
-        className="flex justify-between items-center text-gray-dark text-xs md:text-sm"
+        className="flex justify-between items-center text-gray-dark text-xs md:text-sm mb-3"
       >
         <div className="flex items-center">
           <span className="hidden md:block mr-3">My Location</span>
@@ -85,11 +86,14 @@ export default function Navigation() {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <div className="bg-gray-800 p-1 rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                  <div className="relative bg-gray-800 p-1 rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                     <ShoppingCartIcon
                       className="h-6 w-6"
                       onClick={openCartHandler}
                     />
+                    <span className="text-white absolute -top-1 -right-1 bg-blue w-5 h-5 flex items-center justify-center text-xs rounded-full animate-pulse">
+                      {totalQuantity}
+                    </span>
                   </div>
 
                   {/* Profile dropdown */}
