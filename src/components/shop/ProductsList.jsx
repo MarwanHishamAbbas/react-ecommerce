@@ -1,9 +1,20 @@
 import ProductItem from "./ProductItem";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const ProductsList = () => {
-  const products = useSelector((state) => state.products.products);
-  console.log(products);
+  const productsState = useSelector((state) => state.products.products);
+  const { pathname } = useLocation();
+  let products = [];
+
+  if (pathname.includes("/male")) {
+    products = productsState.filter((item) => item.gender === "male");
+  }
+  if (pathname.includes("/female")) {
+    products = productsState.filter((item) => item.gender === "female");
+  }
+
   return (
     <div className=" py-16 px-0 sm:py-24">
       <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
