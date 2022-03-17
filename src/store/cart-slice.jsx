@@ -9,6 +9,11 @@ const cartSlice = createSlice({
     isVisible: false,
   },
   reducers: {
+    replaceCart(state, action) {
+      state.items = action.payload.items;
+      state.totalQuantity = action.payload.totalQuantity;
+      state.totalPrice = action.payload.totalPrice;
+    },
     toggleCart(state) {
       state.isVisible = !state.isVisible;
     },

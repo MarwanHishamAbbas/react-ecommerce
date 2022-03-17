@@ -5,16 +5,29 @@ import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import ScrollToTop from "./components/UI/ScrollToTop";
 import { Routes, Route } from "react-router-dom";
-import { fetchProductsData } from "./store/store-actions";
+import {
+  fetchCartData,
+  fetchProductsData,
+  sendCartData,
+} from "./store/store-actions";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
   const isVisible = useSelector((state) => state.cart.isVisible);
+  const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
     dispatch(fetchProductsData());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(sendCartData(cart));
+  }, [cart, dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchCartData());
   }, [dispatch]);
 
   return (

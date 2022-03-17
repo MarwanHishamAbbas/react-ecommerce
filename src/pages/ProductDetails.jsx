@@ -67,7 +67,7 @@ const ProductDetails = () => {
         <nav aria-label="Breadcrumb">
           <ol
             role="list"
-            className="flex items-center space-x-2 text-gray-dark font-semibold"
+            className="flex items-center space-x-2 text-gray-dark "
           >
             <li key={productItem.id}>
               <div className="flex items-center">
@@ -107,7 +107,7 @@ const ProductDetails = () => {
                 </svg>
               </div>
             </li>
-            <li className="text-sm">
+            <li className="text-sm font-bold">
               <a href={product.href} aria-current="page" className=" ">
                 {productItem.title}
               </a>

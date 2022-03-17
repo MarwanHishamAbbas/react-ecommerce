@@ -85,13 +85,13 @@ export default function Navigation() {
                     </div>
                   </div>
                 </div>
-                <div className="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <div
+                  className="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+                  onClick={openCartHandler}
+                >
                   <div className="relative bg-gray-800 p-1 rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                    <ShoppingCartIcon
-                      className="h-6 w-6"
-                      onClick={openCartHandler}
-                    />
-                    <span className="text-white absolute -top-1 -right-1 bg-blue w-5 h-5 flex items-center justify-center text-xs rounded-full animate-pulse">
+                    <ShoppingCartIcon className="h-6 w-6" />
+                    <span className="text-white absolute -top-2 -right-2 bg-blue w-6 h-6 flex items-center justify-center text-xs rounded-full animate-pulse">
                       {totalQuantity}
                     </span>
                   </div>
