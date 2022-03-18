@@ -1,11 +1,10 @@
-import { Fragment } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../store/cart-slice";
 import CartItem from "../components/cart/CartItem";
 import { Link } from "react-router-dom";
-
+import noItems from "../assets/noitems.gif";
 export default function Cart() {
   const cart = useSelector((state) => state.cart);
 
@@ -25,7 +24,7 @@ export default function Cart() {
       <div className="absolute inset-0 overflow-hidden">
         <Dialog.Overlay className="absolute inset-0 bg-black bg-opacity-80 transition-opacity" />
 
-        <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+        <div className="pointer-events-none fixed inset-y-0 bottom-0 top-[30%] sm:right-0 sm:top-0 flex max-w-full sm:pl-10">
           <div className="pointer-events-auto w-screen max-w-md">
             <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
               <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
@@ -50,9 +49,11 @@ export default function Cart() {
                   <div className="flow-root">
                     <ul role="list" className="-my-6 divide-y divide-gray-dark">
                       {cart.items.length == "0" ? (
-                        <h1 className="text-3xl text-center mt-32">
-                          No Items Added
-                        </h1>
+                        <img
+                          src={noItems}
+                          className="text-3xl text-center mt-12"
+                          alt="no items"
+                        />
                       ) : (
                         cart.items.map((product) => (
                           <CartItem
