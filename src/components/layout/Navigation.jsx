@@ -15,10 +15,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/cart-slice";
 
 const navigation = [
+  { name: "Popular Products", href: "popular" },
   { name: "Male", href: "male" },
   { name: "Female", href: "female" },
   { name: "Kids", href: "kids" },
-  { name: "Popular Products", href: "popular" },
 ];
 
 export default function Navigation() {

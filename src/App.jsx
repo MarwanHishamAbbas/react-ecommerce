@@ -14,6 +14,7 @@ import {
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Home from "./pages/Home";
+import Footer from "./components/layout/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ function App() {
         <Route path="productDetails/:productId" element={<ProductDetails />} />
         <Route path="checkout" element={<Checkout />} />
       </Routes>
+      <Footer />
     </Layout>
   );
 }

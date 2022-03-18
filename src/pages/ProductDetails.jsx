@@ -207,7 +207,7 @@ const ProductDetails = () => {
                                 : " cursor-not-allowed",
                               active
                                 ? "bg-blue text-white transition-all"
-                                : "ring-0 transition-all",
+                                : " transition-all",
                               "group relative rounded-md flex items-center justify-center text-sm font-medium uppercase focus:outline-none sm:flex-1 "
                             )
                           }
@@ -224,7 +224,7 @@ const ProductDetails = () => {
 
                               <div
                                 className={classNames(
-                                  active ? " " : "border-2",
+                                  active ? "" : "border-2",
                                   "absolute -inset-px rounded-md pointer-events-none"
                                 )}
                                 aria-hidden="true"
@@ -239,7 +239,7 @@ const ProductDetails = () => {
 
                 <button
                   onClick={addItemHandler}
-                  className="mt-10 w-full bg-black border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-gray-dark focus:outline-none transition-all"
+                  className="mt-10 w-full bg-black border border-none rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-gray-dark focus:outline-none transition-all"
                 >
                   Add to Cart
                 </button>
