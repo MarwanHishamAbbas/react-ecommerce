@@ -10,10 +10,10 @@ import { cartActions } from "../store/cart-slice";
 const product = {
   sizes: [
     { name: "XS", inStock: true },
-    { name: "S", inStock: false },
+    { name: "S", inStock: true },
     { name: "M", inStock: true },
     { name: "L", inStock: true },
-    { name: "XL", inStock: false },
+    { name: "XL", inStock: true },
     { name: "2XL", inStock: true },
     { name: "3XL", inStock: true },
   ],
@@ -68,7 +68,7 @@ const ProductDetails = () => {
 
   return (
     <div className="bg-white">
-      <div className="pt-6">
+      <div>
         <nav aria-label="Breadcrumb">
           <ol
             role="list"
@@ -203,14 +203,16 @@ const ProductDetails = () => {
                           className={({ active }) =>
                             classNames(
                               size.inStock
-                                ? "bg-white shadow-sm  cursor-pointer"
+                                ? "bg-white shadow-sm cursor-pointer"
                                 : " cursor-not-allowed",
-                              active ? "ring-2 ring-blue" : "",
-                              "group relative border rounded-md flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 "
+                              active
+                                ? "bg-blue text-white transition-all"
+                                : "ring-0 transition-all",
+                              "group relative rounded-md flex items-center justify-center text-sm font-medium uppercase focus:outline-none sm:flex-1 "
                             )
                           }
                         >
-                          {({ active, checked }) => (
+                          {({ active }) => (
                             <>
                               <RadioGroup.Label
                                 onClick={sizeHandler}
@@ -219,38 +221,14 @@ const ProductDetails = () => {
                               >
                                 {size.name}
                               </RadioGroup.Label>
-                              {size.inStock ? (
-                                <div
-                                  className={classNames(
-                                    active ? "border" : "border-2",
-                                    checked
-                                      ? "border-black"
-                                      : "border-transparent",
-                                    "absolute -inset-px rounded-md pointer-events-none"
-                                  )}
-                                  aria-hidden="true"
-                                />
-                              ) : (
-                                <div
-                                  aria-hidden="true"
-                                  className="absolute -inset-px rounded-md border-2 pointer-events-none"
-                                >
-                                  <svg
-                                    className="absolute inset-0 w-full h-full stroke-2"
-                                    viewBox="0 0 100 100"
-                                    preserveAspectRatio="none"
-                                    stroke="currentColor"
-                                  >
-                                    <line
-                                      x1={0}
-                                      y1={100}
-                                      x2={100}
-                                      y2={0}
-                                      vectorEffect="non-scaling-stroke"
-                                    />
-                                  </svg>
-                                </div>
-                              )}
+
+                              <div
+                                className={classNames(
+                                  active ? " " : "border-2",
+                                  "absolute -inset-px rounded-md pointer-events-none"
+                                )}
+                                aria-hidden="true"
+                              />
                             </>
                           )}
                         </RadioGroup.Option>
@@ -261,7 +239,7 @@ const ProductDetails = () => {
 
                 <button
                   onClick={addItemHandler}
-                  className="mt-10 w-full bg-black border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="mt-10 w-full bg-black border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-gray-dark focus:outline-none transition-all"
                 >
                   Add to Cart
                 </button>

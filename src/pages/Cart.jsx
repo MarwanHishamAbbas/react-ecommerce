@@ -24,7 +24,7 @@ export default function Cart() {
       <div className="absolute inset-0 overflow-hidden">
         <Dialog.Overlay className="absolute inset-0 bg-black bg-opacity-80 transition-opacity" />
 
-        <div className="pointer-events-none fixed inset-y-0 bottom-0 top-[30%] sm:right-0 sm:top-0 flex max-w-full sm:pl-10">
+        <div className="pointer-events-none fixed inset-y-0 bottom-0 top-[7%] sm:right-0 sm:top-0 flex max-w-full sm:pl-10">
           <div className="pointer-events-auto w-screen max-w-md">
             <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
               <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">

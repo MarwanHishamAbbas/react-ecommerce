@@ -13,6 +13,7 @@ import {
 } from "./store/store-actions";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Home from "./pages/Home";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function App() {
       <ScrollToTop />
       {isVisible && <Cart />}
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="products/*" element={<Products />} />
         <Route path="productDetails/:productId" element={<ProductDetails />} />
         <Route path="checkout" element={<Checkout />} />

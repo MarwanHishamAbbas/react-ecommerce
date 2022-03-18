@@ -28,7 +28,7 @@ export default function Navigation() {
     dispatch(cartActions.toggleCart());
   };
   return (
-    <>
+    <div className="pb-10 sm:pb-24">
       <Disclosure
         as="nav"
         className="flex justify-between items-center text-gray-dark text-xs md:text-sm mb-3"
@@ -58,7 +58,7 @@ export default function Navigation() {
                   </Disclosure.Button>
                 </div>
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start ">
-                  <div className="flex-shrink-0 flex items-center">
+                  <Link to="/" className="flex-shrink-0 flex items-center">
                     <img
                       className="h-8 w-auto md:hidden"
                       src={logoIcon}
@@ -69,7 +69,7 @@ export default function Navigation() {
                       src={logoAll}
                       alt=""
                     />
-                  </div>
+                  </Link>
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
@@ -178,6 +178,6 @@ export default function Navigation() {
           </>
         )}
       </Disclosure>
-    </>
+    </div>
   );
 }
