@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Promo() {
   return (
-    <section className="relative overflow-hidden mt-24 md:mt-36">
+    <section className="relative overflow-hidden mt-24 sm:mt-36">
       <div className=" pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
         <div className="">
           <div className="sm:max-w-lg">

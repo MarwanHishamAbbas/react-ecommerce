@@ -29,15 +29,15 @@ const NewsLetter = () => {
         >
           <input
             type="email"
-            placeholder="Enter your email"
-            className="text-gray-dark w-full p-3 rounded-md border border-gray-dark outline-none focus:ring-blue focus:ring-1 foucs:border-none"
+            placeholder="Enter your email address"
+            className="text-gray-dark w-full p-3 rounded-md border-2 border-gray-light outline-none focus:ring-blue focus:ring-1 foucs:border-none"
           />
           <button className="w-full sm:w-1/3 mt-3 px-8 py-3 rounded-md text-white bg-black outline-none shadow-md sm:mt-0 sm:ml-3 hover:bg-gray-dark transition-all">
             Get Started
           </button>
         </form>
         <p className="mt-5  text-center text-base text-gray-dark">
-          No spam ever, we are care about the protection of your data. Read our
+          No spam ever, we care about the protection of your data. Read our
           <a className="ml-3 underline" href="#">
             Privacy Policy
           </a>

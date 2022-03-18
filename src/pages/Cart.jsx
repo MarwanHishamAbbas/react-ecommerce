@@ -29,7 +29,7 @@ export default function Cart() {
             <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
               <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                 <div className="flex items-start justify-between">
-                  <Dialog.Title className="text-lg font-medium">
+                  <Dialog.Title className="text-xl font-semibold">
                     {" "}
                     Shopping cart{" "}
                   </Dialog.Title>
@@ -55,24 +55,27 @@ export default function Cart() {
                           alt="no items"
                         />
                       ) : (
-                        cart.items.map((product) => (
-                          <CartItem
-                            key={product.id}
-                            id={product.id}
-                            src={product.src}
-                            name={product.name}
-                            price={product.price}
-                            itemQuantity={product.itemQuantity}
-                            size={product.size}
-                          />
-                        ))
+                        cart.items
+                          .slice()
+                          .reverse()
+                          .map((product) => (
+                            <CartItem
+                              key={product.id}
+                              id={product.id}
+                              src={product.src}
+                              name={product.name}
+                              price={product.price}
+                              itemQuantity={product.itemQuantity}
+                              size={product.size}
+                            />
+                          ))
                       )}
                     </ul>
                   </div>
                 </div>
               </div>
 
-              <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
+              <div className="border-t border-gray-light py-6 px-4 sm:px-6">
                 <div className="flex justify-between text-base font-bold">
                   <p className="font-semibold text-sm">Subtotal</p>
                   <p className="text-lg font-bold">${cart.totalPrice}.00</p>
