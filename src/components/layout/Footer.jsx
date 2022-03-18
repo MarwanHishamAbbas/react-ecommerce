@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/Logo.svg";
 const Footer = () => {
   return (
-    <footer className="pt-36">
+    <footer className="pt-28 sm:pt-36">
       <div>
         <div className="lg:flex">
           <div className="w-full lg:w-2/5">

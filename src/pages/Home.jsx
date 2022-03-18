@@ -1,7 +1,8 @@
 import heroImg from "../assets/hero.png";
 import brands from "../assets/brands.svg";
-import { HiOutlineShoppingCart } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import Promo from "../components/Home/Promo";
+import NewsLetter from "../components/Home/NewsLetter";
 
 const Home = () => {
   return (
@@ -19,9 +20,8 @@ const Home = () => {
             </p>
             <Link
               to="/products/popular"
-              className="mt-6 mb-16  w-full md:w-3/2 lg:w-1/2 bg-black border border-none rounded-md py-4 flex items-center justify-center text-base font-semibold text-white hover:bg-gray-dark focus:outline-none transition-all"
+              className="mt-6 mb-16 inline-block  bg-black border border-none rounded-md py-3 px-8  items-center justify-center text-base font-semibold text-white hover:bg-gray-dark focus:outline-none transition-all"
             >
-              <HiOutlineShoppingCart className="text-2xl mr-5 " />
               Start Shopping
             </Link>
           </div>
@@ -33,6 +33,8 @@ const Home = () => {
           <img src={heroImg} alt="Hero Image" />
         </div>
       </section>
+      <Promo />
+      <NewsLetter />
     </main>
   );
 };
