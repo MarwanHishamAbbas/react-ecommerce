@@ -35,8 +35,7 @@ const ProductDetails = () => {
     return classes.filter(Boolean).join(" ");
   }
 
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
-
+  const [selectedSize, setSelectedSize] = useState("M");
   const sizeHandler = (e) => {
     setSelectedSize(e.target.innerText);
   };
@@ -199,7 +198,7 @@ const ProductDetails = () => {
                       {product.sizes.map((size) => (
                         <RadioGroup.Option
                           key={size.name}
-                          value={size}
+                          value={selectedSize}
                           disabled={!size.inStock}
                           className={({ active }) =>
                             classNames(

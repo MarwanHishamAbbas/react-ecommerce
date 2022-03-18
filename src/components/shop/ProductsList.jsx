@@ -23,8 +23,8 @@ const ProductsList = () => {
   }
 
   return (
-    <div className=" py-9 px-0 sm:py-24">
-      <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+    <div className=" py-10 px-0 sm:py-24">
+      <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {products.map((product) => (
           <ProductItem
             key={product.id}
