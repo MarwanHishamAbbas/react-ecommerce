@@ -5,6 +5,7 @@ import { cartActions } from "../store/cart-slice";
 import CartItem from "../components/cart/CartItem";
 import { Link } from "react-router-dom";
 import noItems from "../assets/noitems.gif";
+import PageAnimation from "../components/Animation/PageAnimation";
 export default function Cart() {
   const cart = useSelector((state) => state.cart);
   const isVisible = useSelector((state) => state.cart.isVisible);

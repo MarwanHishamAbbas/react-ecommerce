@@ -43,7 +43,7 @@ function App() {
       {isVisible && <Cart />}
 
       <AnimatePresence exitBeforeEnter>
-        <Routes key={location.pathname} location={location}>
+        <Routes key={location.key} location={location}>
           <Route path="/" element={<Home />} />
           <Route path="products/*" element={<Products />} />
           <Route
