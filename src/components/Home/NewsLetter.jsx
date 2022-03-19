@@ -32,7 +32,7 @@ const NewsLetter = () => {
             placeholder="Enter your email address"
             className="text-gray-dark w-full p-3 rounded-md border-2 border-gray-light outline-none focus:ring-blue focus:ring-1 foucs:border-none"
           />
-          <button className="w-full sm:w-1/3 mt-3 px-8 py-3 rounded-md text-white bg-black outline-none shadow-md sm:mt-0 sm:ml-3 hover:bg-gray-dark transition-all">
+          <button className="w-full sm:w-1/3 mt-3 px-8 py-3 rounded-md text-white bg-black font-semibold outline-none shadow-md sm:mt-0 sm:ml-3 hover:bg-gray-dark transition-all">
             Get Started
           </button>
         </form>

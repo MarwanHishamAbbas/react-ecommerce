@@ -81,10 +81,10 @@ const Footer = () => {
                   Mega cloud
                 </a>
                 <a href="#" className="block mt-2 text-sm ">
-                  Aperion UI
+                  Legacy
                 </a>
                 <a href="#" className="block mt-2 text-sm">
-                  Meraki UI
+                  ReactJS
                 </a>
               </div>
 
@@ -102,8 +102,8 @@ const Footer = () => {
         <hr className="h-px my-6 bg-gray-300 border-none dark:bg-gray-700" />
 
         <div>
-          <p className="text-center text-gray-800 dark:text-white">
-            © Brand 2020 - All rights reserved
+          <p className="text-center text-gray-dark">
+            © Dine Market 2022 - All rights reserved
           </p>
         </div>
       </div>
