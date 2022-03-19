@@ -1,11 +1,6 @@
 import React from "react";
-import AnimatedPage from "../components/UI/AnimatedPage";
 const Checkout = () => {
-  return (
-    <AnimatedPage>
-      <h1>Checkout Page</h1>
-    </AnimatedPage>
-  );
+  return <h1>Checkout Page</h1>;
 };
 
 export default Checkout;

@@ -19,7 +19,7 @@ export default function Promo() {
         />
       </div>
       {/* CTA */}
-      <div className=" pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
+      <div className=" pt-16 pb-16 sm:pt-24 sm:pb-40 lg:pt-48 lg:pb-48">
         <div className="">
           <div className="sm:max-w-lg">
             <h1 className="text-5xl font-bold">
