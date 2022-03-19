@@ -5,7 +5,7 @@ import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import ScrollToTop from "./components/UI/ScrollToTop";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import {
   fetchCartData,
   fetchProductsData,
@@ -15,11 +15,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Home from "./pages/Home";
 import Footer from "./components/layout/Footer";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const dispatch = useDispatch();
   const isVisible = useSelector((state) => state.cart.isVisible);
   const cart = useSelector((state) => state.cart);
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(fetchProductsData());
@@ -37,13 +39,20 @@ function App() {
     <Layout>
       <Navigation />
       <ScrollToTop />
+
       {isVisible && <Cart />}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="products/*" element={<Products />} />
-        <Route path="productDetails/:productId" element={<ProductDetails />} />
-        <Route path="checkout" element={<Checkout />} />
-      </Routes>
+
+      <AnimatePresence exitBeforeEnter>
+        <Routes key={location.pathname} location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="products/*" element={<Products />} />
+          <Route
+            path="productDetails/:productId"
+            element={<ProductDetails />}
+          />
+          <Route path="checkout" element={<Checkout />} />
+        </Routes>
+      </AnimatePresence>
       <Footer />
     </Layout>
   );

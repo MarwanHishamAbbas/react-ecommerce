@@ -1,4 +1,5 @@
-import { Dialog, Transition } from "@headlessui/react";
+import { motion } from "framer-motion";
+import { Dialog } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../store/cart-slice";
@@ -7,13 +8,18 @@ import { Link } from "react-router-dom";
 import noItems from "../assets/noitems.gif";
 export default function Cart() {
   const cart = useSelector((state) => state.cart);
-
   const isVisible = useSelector((state) => state.cart.isVisible);
   const dispatch = useDispatch();
-
   const toggleHandler = () => {
     dispatch(cartActions.toggleCart());
   };
+
+  const animation = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+  };
+
   return (
     <Dialog
       as="div"
@@ -22,7 +28,15 @@ export default function Cart() {
       open={isVisible}
     >
       <div className="absolute inset-0 overflow-hidden">
-        <Dialog.Overlay className="absolute inset-0 bg-black bg-opacity-80 transition-opacity" />
+        <motion.div
+          variants={animation}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transition={{ duration: 0.3 }}
+        >
+          <Dialog.Overlay className="absolute inset-0 bg-black bg-opacity-80 transition-opacity" />
+        </motion.div>
 
         <div className="pointer-events-none fixed inset-y-0 bottom-0 top-[7%] sm:right-0 sm:top-0 flex max-w-full sm:pl-10">
           <div className="pointer-events-auto w-screen max-w-md">
