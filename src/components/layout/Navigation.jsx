@@ -1,6 +1,5 @@
 import logoIcon from "../../favicon.svg";
 import logoAll from "../../assets/Logo.svg";
-import user from "../../assets/main.jpg";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {
@@ -123,25 +122,17 @@ export default function Navigation() {
                         <Menu.Item>
                           <a
                             href="#"
-                            className="block px-4 py-2 text-sm text-gray-700"
+                            className="block px-4 py-2 text-sm text-gray-dark"
                           >
-                            Your Profile
+                            Sign In
                           </a>
                         </Menu.Item>
                         <Menu.Item>
                           <a
                             href="#"
-                            className="block px-4 py-2 text-sm text-gray-700"
+                            className="block px-4 py-2 text-sm text-gray-dark"
                           >
-                            Settings
-                          </a>
-                        </Menu.Item>
-                        <Menu.Item>
-                          <a
-                            href="#"
-                            className="block px-4 py-2 text-sm text-gray-700"
-                          >
-                            Sign out
+                            Sign Up
                           </a>
                         </Menu.Item>
                       </Menu.Items>

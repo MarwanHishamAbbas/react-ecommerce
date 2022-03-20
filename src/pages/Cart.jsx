@@ -84,7 +84,7 @@ export default function Cart() {
                   Shipping and taxes calculated at checkout.
                 </p>
                 <div className="mt-6">
-                  <Link to="/checkout" onClick={toggleHandler}>
+                  <Link to="/" onClick={toggleHandler}>
                     <button
                       className="flex w-full items-center justify-center rounded-md border border-transparent bg-black px-6 py-3 text-base font-medium text-white shadow-sm disabled:cursor-not-allowed disabled:bg-gray-dark"
                       disabled={cart.items.length == "0" ? true : false}

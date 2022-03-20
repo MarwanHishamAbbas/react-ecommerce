@@ -3,7 +3,7 @@ import { StarIcon } from "@heroicons/react/solid";
 import { RadioGroup } from "@headlessui/react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import LoadingSpinner from "../components/UI/LoadingSpinner";
 import { Link } from "react-router-dom";
 import { cartActions } from "../store/cart-slice";
 import PageAnimation from "../components/Animation/PageAnimation";
@@ -62,9 +62,7 @@ const ProductDetails = () => {
   };
 
   if (!productItem) {
-    return (
-      <AiOutlineLoading3Quarters className="animate-spin text-center text-7xl w-full mt-36" />
-    );
+    return <LoadingSpinner />;
   }
 
   return (

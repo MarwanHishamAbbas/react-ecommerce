@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 
 const ProductsList = () => {
   const productsState = useSelector((state) => state.products.products);
-
   const location = useLocation();
   const { pathname } = location;
   let products = [];
